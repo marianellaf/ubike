@@ -1,50 +1,45 @@
-<!--codigo-->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>ubike</title>
+	<title>trello</title>
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
-</head>
+	<link rel="icon" type="image/png" href="./img/trello.png"
 <body>
-	<section>
-		<div class="container-fluid-90">
-			<div class="row">
-				<div class="col-md-offset-1 col-md-10">
-					<div id="map" class="fondo mapa">
-						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3328.931221801205!2d-70.6404791848007!3d-33.45109838077376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c5716c4f3791%3A0xd720b483e1bb69d4!2sLira+650%2C+Santiago%2C+Regi%C3%B3n+Metropolitana!5e0!3m2!1ses!2scl!4v1478201622188"  height="600" frameborder="0" style="width: 100%;border:0;" allowfullscreen></iframe>
-					</div>
-				</div>
-			</div>
-				<div class="caja">
-						<button id="btn1" onclick=setAdressA()>						
-							<h3><i class="fa fa-map-marker" aria-hidden="true"></i>Casa matriz</h3>
-							<p>Lira 650</p>
-							<p>Tel: (2) 2350 0031 / 2665 1344</p>
-						</button>
-						<button id="btn2" onclick=setAdressB()>					
-							<h3><i class="fa fa-map-marker" aria-hidden="true"></i>Sucursal 1</h3>
-							<p>Lira 754</p>
-							<p>Tel: (2) 2350 0028 / 2665 1571</p>
-						</button>
-						<button id="btn3" onclick=setAdressC()>					
-							<h3><i class="fa fa-map-marker" aria-hidden="true"></i>Sucursal 2</h3>
-							<p>Gral Urriola 628</p>
-							<p>Tel:  (2) 2350 0017</p>
-						</button>
-						<button id="btn4" onclick=setAdressD()>
-							<h3><i class="fa fa-map-marker" aria-hidden="true"></i>Sucursal Alameda</h3>
-							<p>Rancagua: Alameda 756</p>
-							<p>Telf: (7) 2224 6427 / 2222 5310</p>
-						</button>
-				</div>	
-				
-		</div>
-	</section>
-	<script type="text/javascript" src="js/script.js"></script>
-</body>
+<header>
+      <nav class="navbar ">
+        <div class="container">
+          <div class="row">
+            <div class="navbar-header col-xs-12 col-lg-12">
+              <h1 class="text-center">Tareas</h1>
+              <hr>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+  <!--CABECERA DE LA PAGINA-->
+  <!--boton añadir-->
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <button type="button" onclick="crearListas()" class="btn btn-info">Añadir Listas</button>
+          </div>    
+        </div>
+      </div>
+    </section>
+   <!--row contenedora de listas-->
+    <section>
+      <div class="container" id="tablero"></div>
+    </section>
+    <!-- LINK JS Y JQUERY-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script type='text/javascript' src='js/main.js'></script>
+  </body>
 </html>

@@ -1,21 +1,131 @@
-var sc1 = '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3328.931221801205!2d-70.6404791848007!3d-33.45109838077376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c5716c4f3791%3A0xd720b483e1bb69d4!2sLira+650%2C+Santiago%2C+Regi%C3%B3n+Metropolitana!5e0!3m2!1ses!2scl!4v1478201622188"  height="600" frameborder="0" style="width: 100%;border:0;" allowfullscreen></iframe>';
-var sc2 = '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3328.8545461110652!2d-70.63988128518314!3d-33.453095880773226!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c571bf2e6e7b%3A0x5e93ffe992332316!2sLira+754%2C+Santiago%2C+Regi%C3%B3n+Metropolitana!5e0!3m2!1ses!2scl!4v1478212460574"  height="600" frameborder="0" style="width: 100%;border:0;" allowfullscreen></iframe>';
-var sc3 = '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3328.945013399627!2d-70.64012538518317!3d-33.45073908077388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c571151fda33%3A0x88c16904fd617d09!2sGral+Urriola+628%2C+Santiago%2C+Regi%C3%B3n+Metropolitana!5e0!3m2!1ses!2scl!4v1478212524226"  height="600" frameborder="0" style="width: 100%;border:0;" allowfullscreen></iframe>';
-var sc4 = '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.376333001244!2d-70.62562368518353!3d-33.43950058077703!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c58045408c57%3A0xeccd15ca7e00fd2b!2sRancagua+756%2C+Providencia%2C+Regi%C3%B3n+Metropolitana!5e0!3m2!1ses!2scl!4v1478212561923"  height="600" frameborder="0" style="width: 100%;border:0;" allowfullscreen></iframe>';
+function crearListas(){
 
+	// se crea el contenedor padre
+	var tableroLista = document.getElementById('tablero');
 
-function setAdressA(){
-		document.getElementById('map').innerHTML = sc1;
+	//  guardar lista
+	var divRow = document.createElement('div');
+	var addNombre = document.createElement('div');
+	var inputLista = document.createElement('input');
+	var botonGuardar = document.createElement('button');
+	
+	// se crea textnode boton guardar
+	var nombreBoton = document.createTextNode('Guardar');
+
+	//  clases y atributos
+	divRow.classList.add('row');
+	addNombre.classList.add('col-xs-12','col-md-3','marco');
+	addNombre.setAttribute('id','nombre-lista');
+	inputLista.classList.add('form-control');
+	inputLista.setAttribute('type','text');
+	inputLista.setAttribute('id','Ingreso-lista');
+	inputLista.setAttribute('placeholder','Nombre de la lista...');
+	botonGuardar.classList.add('btn','btn-success');
+	botonGuardar.setAttribute('type','button');
+	
+	
+	botonGuardar.appendChild(nombreBoton);
+	addNombre.appendChild(inputLista);
+	addNombre.appendChild(botonGuardar);
+	divRow.appendChild(addNombre);
+	tableroLista.appendChild(divRow);
+
+	// hacer que el boton 
+	botonGuardar.addEventListener("click", guardarLista);
+
+	function guardarLista(){
+		var nombreLista = inputLista.value;
+		var nodoTextoLista = document.createTextNode(nombreLista);
+
+		// se valida texto en nombre de la lista
+		if (nombreLista == null || nombreLista.length == 0){
+			alert("No has ingresado el nombre de la lista");
+			return false;
+		}
+
+		// para volver a dejar vacio el input
+		inputLista.value="";
+
+		//crear elementos de la lista creada
+		var addLista = document.createElement('div');
+		var titulo = document.createElement('strong');
+		var enlace = document.createElement('a');
+
+		//nodo enlace añadir tarjeta -elemento "a"
+		var anadirTarjeta = enlace.value;
+		var nodoEnlaceTarjeta = document.createTextNode(anadirTarjeta);
+		var nombreEnlace = document.createTextNode('Añadir Tarjeta');
+
+		//  clases y atributos
+		addLista.classList.add('col-xs-12','col-md-3','marco');
+		addLista.setAttribute('id','lista-ok');
+
+		
+		enlace.appendChild(nombreEnlace)
+		titulo.appendChild(nodoTextoLista);
+		enlace.appendChild(nodoEnlaceTarjeta);
+		addLista.appendChild(titulo);
+		addLista.appendChild(enlace);
+		divRow.appendChild(addLista);
+		tableroLista.appendChild(divRow)
+
+	// se hace que funcione link 
+	enlace.addEventListener("click", anadirTextArea);
+
+	function anadirTextArea(){
+		var areaTexto = document.createElement('textarea');
+		var btnAnadirTarjeta = document.createElement('button');
+
+		areaTexto.classList.add('form-control');
+		areaTexto.setAttribute('rows','3');
+		areaTexto.setAttribute('placeholder','Nombre de la tarjeta...');
+		btnAnadirTarjeta.classList.add('btn','btn-success');
+		btnAnadirTarjeta.setAttribute('type','button');
+
+		var nombreBtnAnadir = document.createTextNode('Añadir');
+
+		btnAnadirTarjeta.appendChild(nombreBtnAnadir);
+		addLista.appendChild(areaTexto);
+		addLista.appendChild(btnAnadirTarjeta);
+
+		//elimina enlace cuando se hace click y aparece boton añadir
+		enlace.classList.toggle('ocultar');
+
+	// se hace que funcione btn añadir tarjeta
+	btnAnadirTarjeta.addEventListener("click", anadirTarjetaNueva);
+
+	function anadirTarjetaNueva(){
+		var divTarjeta = document.createElement('div');
+		var nombreTarjeta = areaTexto.value;
+		var nodoNombreTarjeta = document.createTextNode(nombreTarjeta);
+		var iconoXdos = document.createElement('i');
+
+		if (nombreTarjeta == null || nombreTarjeta.length == 0){
+			alert("No has ingresado el nombre de la Tarjeta");
+			return false;
+		}
+
+		// para volver a dejar vacio el input
+		areaTexto.value="";
+
+		divTarjeta.classList.add('tarjeta');
+		iconoXdos.classList.add('fa','fa-times');
+		iconoXdos.setAttribute('aria-hidden','true');
+
+		divTarjeta.appendChild(nodoNombreTarjeta);
+		addLista.appendChild(divTarjeta);
+		divTarjeta.appendChild(iconoXdos);
+
+		// para eliminar tarjetas
+		iconoXdos.addEventListener("click", eliminarTarjeta);
+		function eliminarTarjeta(){
+			addLista.removeChild(divTarjeta);
+		}		
+
 	}
 
-function setAdressB(){
-		document.getElementById('map').innerHTML = sc2;
-	}
+}
 
-function setAdressC(){
-		document.getElementById('map').innerHTML = sc3;
-	}
+}
 
-function setAdressD(){
-		document.getElementById('map').innerHTML = sc4;
-	}
+}

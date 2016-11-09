@@ -1,31 +1,60 @@
 
-p{
-	font-size: 12px;
-	font-family: ; 
+body{
+	/*background-image: url("../img/trello-logo-blue.png"); */
+	background-repeat: no-repeat;
+	width: 50%;
+	height: 50%;
 }
-.container-fluid-90{
-	width: 90%;
-	margin-left: auto;
-	margin-right: auto;
-	position: relative;
-}
-.caja{
-	width: 20%;
-	position: absolute;
-	top: 100px;
-}
-.caja button {
-	width: 100%;
-	background:  rgba(255, 255, 255, 0.7);
-	padding: 2%;
-	border-left: 2px solid black;
-	border-right: 2px solid black;
-	border-top: 2px solid black;
-}
-.caja:last-child{
-	border-bottom: 2px solid black;
-}
-.fondomapa{
-	width: 100%;
 
+/* sobreescribir estilos */
+.row{
+	margin: 0px;
+}
+
+/* estilos del titulo*/
+h1{
+	color: #fff;
+	font-family: 'Berkshire Swash', cursive;
+}
+
+.btn-info{
+	background-color: none;
+	border: 1px solid #fff;
+}
+
+/* estilos del container padre - tablero*/
+#tablero{
+	padding: 10px;
+}
+
+.marco{
+	background-color: #D8D8D6;
+	padding: 10px;
+	border-radius: 5px;
+	margin: 8px 5px 8px 5px;
+	border: 1px solid #fff;
+}
+
+strong{
+	display: block;
+}
+
+.fa{
+	float: right;
+}
+
+.form-control{
+	margin: 5px 0;
+}
+
+/* clase que oculta enlace - añadir tarjeta*/
+.ocultar{
+	display: none;
+}
+
+.tarjeta{
+	background-color: #fff;
+	border-radius: 5px;
+	padding: 5px 5px;
+	margin: 8px 0px;
 }
